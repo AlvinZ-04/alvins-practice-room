@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Find a song, practice at your own tempo, and keep a record of what you learned in Alvin's Practice Room.">
+  <title>Alvin's Practice Room</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="page-width">
+    <h1>Alvin's Practice Room</h1>
+    <p>I play alto and tenor saxophone. This is a place to find something to play,
+      slow down the difficult parts, and remember what to work on next.</p>
+  </header>
+  <main class="page-width">
+    <section aria-labelledby="find-heading">
+      <h2 id="find-heading">Find a song</h2>
+      <form id="search-form" class="search-row">
+        <div class="search-field">
+          <label for="search-input">Song or artist</label>
+          <input id="search-input" type="search" placeholder="Try John Coltrane or Autumn Leaves" required maxlength="120">
+        </div>
+        <button id="search-button" type="submit">Search</button>
+      </form>
+      <p id="search-status" class="status" role="status">Search for a recording, then choose a song to practice.</p>
+      <div id="search-results"></div>
+      <div id="preview-section" class="preview" hidden>
+        <p id="preview-title"></p>
+        <audio id="preview-audio" controls preload="none" aria-label="Song preview"></audio>
+        <a id="preview-link" href="https://music.apple.com/" target="_blank" rel="noopener noreferrer">Listen on Apple Music</a>
+        <p id="preview-status" role="status">Preview provided by Apple. Open the store link for the full recording.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="saved-heading">
+      <h2 id="saved-heading">Saved songs</h2>
+      <p id="storage-status" role="status">Your saved songs and journal stay in this browser.</p>
+      <div id="saved-songs"></div>
+    </section>
+
+    <section aria-labelledby="practice-heading">
+      <h2 id="practice-heading">Practice</h2>
+      <p id="selected-song" role="status">Free practice — choose a song above, or start with a warm-up.</p>
+      <div class="practice-layout">
+        <div class="metronome">
+          <label for="tempo">Tempo in beats per minute</label>
+          <p><output id="tempo-output" for="tempo">80</output> BPM</p>
+          <input id="tempo" type="range" min="40" max="200" value="80" step="1">
+          <div class="tempo-controls">
+            <button id="slower" type="button" aria-label="Decrease tempo by five BPM">−5 BPM</button>
+            <button id="faster" type="button" aria-label="Increase tempo by five BPM">+5 BPM</button>
+          </div>
+          <label for="meter">Beats per bar</label>
+          <select id="meter">
+            <option value="4">4 beats</option>
+            <option value="3">3 beats</option>
+            <option value="2">2 beats</option>
+          </select>
+          <div id="beats" class="beats" aria-hidden="true"></div>
+          <button id="metronome-button" type="button" aria-pressed="false">Start metronome</button>
+          <p id="metronome-status" class="status" role="status">The first beat has a higher click. Start at a comfortable tempo.</p>
+        </div>
+        <div class="practice-notes">
+          <h3>A little at a time</h3>
+          <p>Pick a short phrase. Start slowly enough that you can play it cleanly,
+            then move up a few BPM when it feels comfortable.</p>
+          <p>For saxophone, try the rhythm on one note first. Then add the fingering.
+            Keep listening to your tone as well as the beat.</p>
+          <p>The tempo here is your practice tempo. Adjust it to suit what you are working on.</p>
+          <button id="free-practice" type="button">Switch to free practice</button>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="journal-heading">
+      <h2 id="journal-heading">Practice journal</h2>
+      <p id="journal-context">Recording free practice at 80 BPM.</p>
+      <form id="journal-form">
+        <label for="practice-note">What went well? What will you try next?</label>
+        <textarea id="practice-note" rows="4" maxlength="2000" required placeholder="The first phrase felt better at 80 BPM. Next time, work on the jump to the high note."></textarea>
+        <button type="submit">Save practice note</button>
+      </form>
+      <p id="journal-status" class="status" role="status"></p>
+      <div id="journal-entries"></div>
+    </section>
+  </main>
+  <footer class="page-width">
+    <p>Made for my CSE2004 class. Song information and previews come from Apple.</p>
+    <a href="https://alvinz-04.github.io/learn-saxophone/" target="_blank" rel="noopener noreferrer">My beginner saxophone lesson</a>
+  </footer>
+</body>
+</html>
